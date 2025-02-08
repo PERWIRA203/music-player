@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #eaeaea;
+}
+.header {
+    padding: 15px 8%;
+    position: sticky;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 130px;
+}
+nav ul {
+    display: flex;
+}
+nav li {
+    display: inline;
+    margin: 0 20px;
+}
+nav li a {
+    font-size: 20px;
+    color: black;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.5s;
+}
+
+nav li a:hover, nav li a.active{
+    color: #0d11fa;
+}
+.logo{
+    height: 100%;
+}
+.logo img {
+    width: 90px;
+    border-radius: 50%;
+    margin-left: 12%;
+    border: none;
+    transition: 0.5s;
+}
+.logo img:hover {
+    border: 5px solid #0d11fa;
+}
+.main {
+    display: grid;
+    grid-template-columns: auto auto auto; 
+    gap: 5px;  
+    padding: 20px 18%;
+    width: 60%; 
+}
+.container {
+    width: 100%;
+    border: 5px solid;
+    border-color: #1873c8;
+    border-radius: 10px;
+    background-color: #1873c8;
+}
+.image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px 5px 0 0;
+}
+.title {
+    display: flex;
+    font-size: 18px;
+    text-align: center;
+    color: aliceblue;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+.loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px;
+}
+.audio-player {
+    width: 300px;
+}
+.footer {
+    padding: 20px 30px 20px;
+    background-color: #000000;
+    justify-content: center;
+    align-items: center;
+}
+.icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.icon a {
+    padding: 10px;
+    margin: 10px;
+    text-decoration: none;
+    background-color: #ffffff;
+    border-radius: 50%;
+    transition: 0.5s;
+}
+.icon a i {
+    display: flex;
+    justify-content: center;
+    font-size: 1.7em;
+    color: black;
+    transition: 0.5s;
+}
+.icon a i:hover {
+    color: rgb(255, 255, 255);
+    background-color: none;
+}
+.icon a:hover{
+    background-color: black;
+}
+.copy {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.copy p {
+    padding: 10px;
+    color: #ffffff;
+    font-size: 15px;
+}
