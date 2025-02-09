@@ -32,7 +32,7 @@ const content = [{
 const main = document.getElementById("main");
 
 main.innerHTML = content.map(music => 
-    `
+`
     <div class="container">
             <div class="image">
                 <img src="${music.img}" alt="">
@@ -46,15 +46,16 @@ main.innerHTML = content.map(music =>
                   </audio>
             </div>
     </div>
-    `).join("");
+`).join("");
 
-    const audio = document.querySelectorAll(".audio.player");
-    audio.forEach(player => {
-        player.addEventListener('play', () => {
-            audio.forEach(otherPlayer => {
-                if (otherPlayer !== player) {
-                    otherPlayer.pause();
-                }
-            });
+const audioPlayers = document.querySelectorAll(".audio-player");
+
+audioPlayers.forEach(player => {
+    player.addEventListener('play', () => {
+        audioPlayers.forEach(otherPlayer => {
+            if (otherPlayer !== player) {
+                otherPlayer.pause();
+            }            
         });
     });
+});
