@@ -51,11 +51,11 @@ main.innerHTML = content.map(music =>
 const audioPlayers = document.querySelectorAll(".audio-player");
 
 audioPlayers.forEach(player => {
-    player.addEventListener('play', () => {
-        audioPlayers.forEach(otherPlayer => {
-            if (otherPlayer !== player) {
-                otherPlayer.pause();
-            }            
-        });
-    });
-});
+    player.addEventListener("play", function() {
+        audioPlayers.forEach(otherplayer => {
+            if(otherplayer !== player){
+                otherplayer.pause();
+            }
+        })
+    })
+})
