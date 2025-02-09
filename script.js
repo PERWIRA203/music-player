@@ -41,9 +41,20 @@ main.innerHTML = content.map(music =>
                 <h5>${music.title}</h5>
             </div>
             <div class="loader">
-                <audio controls class="audio-player">
+                <audio controls class="audio-player" id="player">
                     <source src="${music.music}" type="audio/mp3">
                   </audio>
             </div>
     </div>
     `).join("");
+
+    const audio = document.querySelectorAll(".audio.player");
+    audio.forEach(player => {
+        player.addEventListener('play', () => {
+            audio.forEach(otherPlayer => {
+                if (otherPlayer !== player) {
+                    otherPlayer.pause();
+                }
+            });
+        });
+    });
