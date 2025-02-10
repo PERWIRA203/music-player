@@ -50,11 +50,9 @@ main.innerHTML = content.map(music =>
 `).join("");
 
 main.addEventListener("click", function(event) {
-    if (event.target.tagName === "IMG") {
-        const container = event.target.closest(".container");
-        const audioPlayer = container.querySelector(".audio-player");
-        audioPlayer.play();
-    }
+    const container = event.target.closest(".container");
+    const audioPlayer = container.querySelector(".audio-player");
+    audioPlayer.play();
 });
 const audioPlayers = document.querySelectorAll("#player");
 let currentIndex = 0;
