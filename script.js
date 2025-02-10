@@ -14,7 +14,7 @@ const content = [{
     music: "music/Selena Gomez Marshmello - Wolves (Lyrics).mp3",
 },
 {
-    img: "picture/lovers_do.jpg",
+    img: "picture/lovers_what.jpg",
     title: "Maroon 5 - What Lovers Do feat. SZA",
     music: "music/Maroon 5 - What Lovers Do (Lyrics) feat. SZA.mp3",
 },
@@ -30,6 +30,7 @@ const content = [{
 },
 ];
 const main = document.getElementById("main");
+
 
 main.innerHTML = content.map(music => 
 `
@@ -48,14 +49,43 @@ main.innerHTML = content.map(music =>
     </div>
 `).join("");
 
-const audioPlayers = document.querySelectorAll(".audio-player");
+main.addEventListener("click", function(event) {
+    if (event.target.tagName === "IMG") {
+        const container = event.target.closest(".container");
+        const audioPlayer = container.querySelector(".audio-player");
+        audioPlayer.play();
+    }
+});
+const audioPlayers = document.querySelectorAll("#player");
+let currentIndex = 0;
 
 audioPlayers.forEach(player => {
     player.addEventListener("play", function() {
         audioPlayers.forEach(otherplayer => {
             if(otherplayer !== player){
                 otherplayer.pause();
-            }
+                otherplayer.currentTime = 0;
+                console.log("urutan ke : ", player)
+                console.log("durasi maksimum : ", player.duration)
+                player.addEventListener("ended", function(){
+                    console.log("music berakhir")
+                })
+            } 
         })
     })
-})
+});
+
+document.addEventListener("keydown", function(event) {
+    if (event.code === "ArrowRight") {
+        audioPlayers[currentIndex].pause();
+        audioPlayers[currentIndex].currentTime = 0;
+        currentIndex = (currentIndex + 1) % audioPlayers.length;
+        audioPlayers[currentIndex].play();
+    } else if (event.code === "ArrowLeft") {
+        audioPlayers[currentIndex].pause();
+        audioPlayers[currentIndex].currentTime = 0;
+        currentIndex = (currentIndex - 1 + audioPlayers.length) % audioPlayers.length;
+        audioPlayers[currentIndex].play();
+    }
+});
+
