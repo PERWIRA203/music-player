@@ -28,6 +28,11 @@ const content = [{
     title: "Avicii - Hey Brother",
     music: "music/Avicii - Hey Brother (Lyrics).mp3",
 },
+{
+    img: "picture/new-light.jpg",
+    title: "John Mayer - New Light",
+    music: "music/John Mayer - New Light (Lyrics) [yiHWkVtsPI4].mp3"
+}
 ];
 const main = document.getElementById("main");
 
@@ -49,28 +54,31 @@ main.innerHTML = content.map(music =>
     </div>
 `).join("");
 
-main.addEventListener("click", function(event) {
+main.addEventListener("click", event => {
     const container = event.target.closest(".container");
     const audioPlayer = container.querySelector(".audio-player");
     audioPlayer.play();
 });
-const audioPlayers = document.querySelectorAll("#player");
+
+const audioPlayers = document.querySelectorAll(".audio-player");
 let currentIndex = 0;
 
-audioPlayers.forEach(player => {
+// memastikan hanya 1 audio yang play
+audioPlayers.forEach((player, index) => {
     player.addEventListener("play", function() {
-        audioPlayers.forEach(otherplayer => {
-            if(otherplayer !== player){
-                otherplayer.pause();
-                otherplayer.currentTime = 0;
-                console.log("urutan ke : ", player)
-                console.log("durasi maksimum : ", player.duration)
-                player.addEventListener("ended", function(){
-                    console.log("music berakhir")
-                })
-            } 
+        audioPlayers.forEach((otherPlayer, otherIndex) => {
+            if (otherIndex !== index) {
+                otherPlayer.pause();
+                otherPlayer.currentTime = 0;
+            }
         })
-    })
+})
+
+// kalau audio selesai, auto play ke lagu berikutnya
+player.addEventListener("ended", function() {
+        currentIndex = (index + 1) % audioPlayers.length;
+        audioPlayers[currentIndex].play();
+    });
 });
 
 document.addEventListener("keydown", function(event) {
